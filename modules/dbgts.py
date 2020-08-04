@@ -10,7 +10,7 @@ def get(malware, csv):
         "DEBUG TIME-STAMP", " -------------------------------" + colors.DEFAULT)))
     binary = lief.parse(malware)
     if binary.has_debug:
-        dbg_time = datetime.datetime.fromtimestamp(binary.debug.timestamp)
+        dbg_time = datetime.datetime.fromtimestamp(binary.debug[0].timestamp)
         if dbg_time > datetime.datetime.now():
             print((colors.RED + '[' + '\u2713' + "]" + colors.DEFAULT + " The age (%s) of the debug file is suspicious" % (
                 str(dbg_time))))

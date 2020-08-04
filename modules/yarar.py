@@ -12,8 +12,7 @@ def get_yara(path):
     root_dir = os.path.dirname(sys.modules['__main__'].__file__)
     return os.path.join(root_dir, 'rules', path)
 
-
-def get(malware, csv):
+def do_get(malware, csv):
     print((colors.WHITE + "\n------------------------------- {0:^13}{1:3}".format(
         "YARA RULES", " -------------------------------") + colors.DEFAULT))
     rules = yara.compile(filepaths={'AntiVM/DB': get_yara('Antidebug_AntiVM_index.yar'),
@@ -54,12 +53,20 @@ def get(malware, csv):
                 for i in list(set(strings_list)):
                     if all(str(c) in string.printable for c in i):
                         print(("\t\t" + format_str.format(str(i), colors.WHITE +
-                                                          "| Occurrences:" + colors.DEFAULT, str(strings_list.count(i)))))
+                                                          "| Occurrences:" + colors.DEFAULT,
+                                                          str(strings_list.count(i)))))
                     else:
                         print("\t\t[X] Not printable")
-                del(strings_list[:])
+                del (strings_list[:])
             print("\n")
         csv.write(str(len(matches)))
     else:
         print((colors.RED + "[X] No" + colors.DEFAULT))
         csv.write(str(len(matches)))
+
+def get(malware, csv):
+    try:
+        do_get(malware, csv)
+    except Exception as e:
+        csv.write("-1,")
+

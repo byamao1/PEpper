@@ -46,7 +46,6 @@ def get(argv, csv):
             antidbg.get(malware, csv)
             antivm.get(malware, csv)
             apialert.get(malware, csv)
-            codeint.get(malware, csv)
             cfg.get(malware, csv)
             dep.get(malware, csv)
             aslr.get(malware, csv)
@@ -56,13 +55,13 @@ def get(argv, csv):
             codeint.get(malware, csv)
             dbgts.get(malware, csv)
             url.get(malware, csv)
-            # manifest.get(malware, csv)
-            # version.get(malware, csv)
+            manifest.get(malware, csv)
+            version.get(malware, csv)
             badstr.get(malware, csv)
             packed.get(malware, csv)
             certificate.get(malware, csv)
             virustotal.get(malware, csv)
-            # yarar.get(malware, csv)
+            yarar.get(malware, csv)
 
     else:
         malware = argv
