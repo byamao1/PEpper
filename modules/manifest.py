@@ -1,5 +1,6 @@
 import lief
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # check whether the PE has a manifest
 
@@ -19,4 +20,4 @@ def get(malware, csv):
             print(binary.resources_manager.manifest)
             csv.write("1,")
     except Exception as e:
-        csv.write("-1,")
+        csv.write(f"{EXCEPTION_VALUE},")

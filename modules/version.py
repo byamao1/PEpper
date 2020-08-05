@@ -1,5 +1,6 @@
 import lief
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # check if PE has a version
 
@@ -19,4 +20,4 @@ def get(malware, csv):
             print((str(binary.resources_manager.version.string_file_info)))
             csv.write("1,")
     except Exception as e:
-        csv.write("-1,")
+        csv.write(f"{EXCEPTION_VALUE},")

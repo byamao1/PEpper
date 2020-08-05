@@ -1,5 +1,6 @@
 import lief
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # check if PE supports cookies on the stack (GS)
 
@@ -20,4 +21,4 @@ def get(malware, csv):
     else:
         print((colors.RED + "[X]" + colors.DEFAULT +
                " Binary has no configuration"))
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

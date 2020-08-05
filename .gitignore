@@ -7,3 +7,8 @@
 *.log
 __pycache__/
 logs/
+
+# large file
+samples/black
+samples/white
+samples/test

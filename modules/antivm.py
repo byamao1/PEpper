@@ -27,6 +27,8 @@ def get(malware, csv):
         "Torpig (UPX) VMM Trick": "\x51\x51\x0F\x01\x27\x00\xC1\xFB\xB5\xD5\x35\x02\xE2\xC3\xD1\x66\x25\x32\xBD\x83"
                                   "\x7F\xB7\x4E\x3D\x06\x80\x0F\x95\xC1\x8B\xC1\xC3 "
     }
+    
+    csv_written = False
 
     with open(malware, "r", errors='replace') as f:
         buf = f.read()
@@ -41,9 +43,12 @@ def get(malware, csv):
                 count += 1
                 trk.append(trick)
                 csv.write(str(count)+",")
+                csv_written = True
 
     if not trk:
         print((colors.GREEN + "[X]" + colors.DEFAULT + " No"))
         csv.write("0,")
     else:
         print((colors.RED + "".join(trk) + colors.DEFAULT))
+        if not csv_written:
+            csv.write(str(len(trk)) + ",")

@@ -1,6 +1,7 @@
 import lief
 from . import colors
 import datetime
+from constants.const import EXCEPTION_VALUE
 
 # check for suspicious debug timestamps
 
@@ -22,4 +23,4 @@ def get(malware, csv):
     else:
         print((colors.RED + "[X]" + colors.DEFAULT +
                " PE has not debug object"))
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

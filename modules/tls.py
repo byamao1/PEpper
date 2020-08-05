@@ -14,14 +14,17 @@ def get(malware, csv):
 
     else:
         csv.write("1,")
-        table_entry_address = binary.tls.addressof_callbacks
-        callback = binary.get_content_from_virtual_address(
-            table_entry_address, 4)
-        callback = '0x' + "".join(["{0:02x}".format(x)
-                                   for x in callback[::-1]])
-        while int(callback, 16) != 0:
-            print(('\t' + callback))
-            table_entry_address += 4
+        try:
+            table_entry_address = binary.tls.addressof_callbacks
             callback = binary.get_content_from_virtual_address(
                 table_entry_address, 4)
-            callback = '0x' + "".join(["{0:02x}".format(x) for x in callback])
+            callback = '0x' + "".join(["{0:02x}".format(x)
+                                       for x in callback[::-1]])
+            while int(callback, 16) != 0:
+                print(('\t' + callback))
+                table_entry_address += 4
+                callback = binary.get_content_from_virtual_address(
+                    table_entry_address, 4)
+                callback = '0x' + "".join(["{0:02x}".format(x) for x in callback])
+        except Exception as e:
+            print("Throw: " + str(e))

@@ -1,5 +1,6 @@
 import lief
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # PE ignores Code Integrity? Let's find out together
 
@@ -20,4 +21,4 @@ def get(malware, csv):
     else:
         print((colors.RED + "[X]" + colors.DEFAULT +
                " Binary has no configuration"))
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

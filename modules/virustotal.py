@@ -1,6 +1,7 @@
 from . import hashes
 import requests
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # check the md5 hash of pe file with the VirusTotal Database
 
@@ -28,4 +29,4 @@ def get(malware, csv):
             csv.write(str(result['positives']/result['total']) + "%,")
     else:
         print(colors.RED + "[X]" + colors.DEFAULT + " API token not found")
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

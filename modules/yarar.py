@@ -3,6 +3,7 @@ import os
 import sys
 from . import colors
 import string
+from constants.const import EXCEPTION_VALUE
 
 
 # checks if the PE matches some YARA rules (database: ~/rules)
@@ -68,5 +69,5 @@ def get(malware, csv):
     try:
         do_get(malware, csv)
     except Exception as e:
-        csv.write("-1,")
+        csv.write(f"{EXCEPTION_VALUE},")
 
