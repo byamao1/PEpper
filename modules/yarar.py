@@ -13,17 +13,20 @@ def get_yara(path):
     root_dir = os.path.dirname(sys.modules['__main__'].__file__)
     return os.path.join(root_dir, 'rules', path)
 
+
 def do_get(malware, csv):
     print((colors.WHITE + "\n------------------------------- {0:^13}{1:3}".format(
         "YARA RULES", " -------------------------------") + colors.DEFAULT))
-    rules = yara.compile(filepaths={'AntiVM/DB': get_yara('Antidebug_AntiVM_index.yar'),
-                                    'Crypto': get_yara('Crypto_index.yar'),
-                                    'CVE': get_yara('CVE_Rules_index.yar'),
-                                    'Exploit': get_yara('Exploit-Kits_index.yar'),
-                                    'Document': get_yara('Malicious_Documents_index.yar'),
-                                    'Malware': get_yara('malware_index.yar'),
-                                    'Packers': get_yara('Packers_index.yar'),
-                                    'Webshell': get_yara('Webshells_index.yar')})
+    # rules = yara.compile(filepaths={'AntiVM/DB': get_yara('Antidebug_AntiVM_index.yar'),
+    #                                 'Crypto': get_yara('Crypto_index.yar'),
+    #                                 'CVE': get_yara('CVE_Rules_index.yar'),
+    #                                 'Exploit': get_yara('Exploit-Kits_index.yar'),
+    #                                 'Document': get_yara('Malicious_Documents_index.yar'),
+    #                                 'Malware': get_yara('malware_index.yar'),
+    #                                 'Packers': get_yara('Packers_index.yar'),
+    #                                 'Webshell': get_yara('Webshells_index.yar')})
+    rules = yara.compile(filepaths={'Miner': get_yara('miner_index.yar')
+                                    })
 
     strings_list = []
     format_str = "{:<35} {:<1} {:<1}"
@@ -65,9 +68,9 @@ def do_get(malware, csv):
         print((colors.RED + "[X] No" + colors.DEFAULT))
         csv.write(str(len(matches)))
 
+
 def get(malware, csv):
     try:
         do_get(malware, csv)
     except Exception as e:
         csv.write(f"{EXCEPTION_VALUE},")
-

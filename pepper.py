@@ -8,10 +8,10 @@ from modules import output
 import sys
 
 
-def main():
+def main(csv_name:str='output.csv'):
     argv.get()
     banner.get()
-    csv = open("output.csv", 'w')
+    csv = open(csv_name, 'w')
     csv.write("id,susp_entrop_ratio,susp_name_ratio,susp_code_size,imphash,n_exports,n_antidbg,n_antivm,n_susp_api,"
               "has_cfg,has_dep,has_aslr,has_seh,has_gs,has_tls,has_code_integrity,susp_dbg_ts,n_url,n_ip,has_manifest,has_version,"
               "n_susp_strings,is_packed,"
@@ -23,7 +23,13 @@ def main():
 
 
 if __name__ == "__main__":
+    sample_dir_name = 'black'
     if len(sys.argv) < 2:
-        sys.argv.append("./samples/tmp")
+        sys.argv.append(f"./samples/{sample_dir_name}")
 
-    main()
+    main(csv_name=f'{sample_dir_name}.csv')
+
+    # second
+    sample_dir_name = 'white'
+    sys.argv[1] = f"./samples/{sample_dir_name}"
+    main(csv_name=f'{sample_dir_name}.csv')
