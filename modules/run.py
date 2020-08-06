@@ -57,7 +57,7 @@ def get(argv, csv):
             url.get(malware, csv)
             manifest.get(malware, csv)
             version.get(malware, csv)
-            badstr.get(malware, csv)
+            # badstr.get(malware, csv)
             packed.get(malware, csv)
             certificate.get(malware, csv)
             virustotal.get(malware, csv)
