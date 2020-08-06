@@ -1,0 +1,2 @@
+id,susp_entrop_ratio,susp_name_ratio,susp_code_size,imphash,n_exports,n_antidbg,n_antivm,n_susp_api,has_cfg,has_dep,has_aslr,has_seh,has_gs,has_tls,has_code_integrity,susp_dbg_ts,n_url,n_ip,has_manifest,has_version,n_susp_strings,is_packed,has_certificate,susp_virustotal_ratio,n_yara_rules
+sample.exe,0.0%,0.5454545454545454%,0,8b6a8a40b1ce9fcdf6ba16a0f11da96b,0,4,1,22,0,1,1,1,1,1,1,0,4,1,1,1,20,1,0,-1,3
