@@ -17,15 +17,16 @@ def get_yara(path):
 def do_get(malware, csv):
     print((colors.WHITE + "\n------------------------------- {0:^13}{1:3}".format(
         "YARA RULES", " -------------------------------") + colors.DEFAULT))
-    rules = yara.compile(filepaths={'AntiVM/DB': get_yara('antidebug_antivm_index.yar'),
-                                    'Crypto': get_yara('crypto_index.yar'),
-                                    'CVE': get_yara('cve_rules_index.yar'),
-                                    'Exploit': get_yara('exploit_kits_index.yar'),
-                                    'Document': get_yara('maldocs_index.yar'),
-                                    'Malware': get_yara('malware_index.yar'),
-                                    'Packers': get_yara('packers_index.yar'),
-                                    'Webshell': get_yara('webshells_index.yar'),
-                                    'Miner': get_yara('miner_index.yar')})
+    rules = yara.compile(filepaths={
+        # 'AntiVM/DB': get_yara('antidebug_antivm_index.yar'),
+        'Crypto': get_yara('crypto_index.yar'),
+        # 'CVE': get_yara('cve_rules_index.yar'),
+        # 'Exploit': get_yara('exploit_kits_index.yar'),
+        # 'Document': get_yara('maldocs_index.yar'),
+        # 'Malware': get_yara('malware_index.yar'),
+        # 'Packers': get_yara('packers_index.yar'),
+        # 'Webshell': get_yara('webshells_index.yar'),
+        'Miner': get_yara('miner_index.yar')})
 
     strings_list = []
     format_str = "{:<35} {:<1} {:<1}"
