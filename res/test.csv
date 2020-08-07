@@ -1,0 +1,2 @@
+id,n_antivm,has_dep,has_aslr,has_gs,has_tls,has_code_integrity,susp_dbg_ts,n_yara_rules
+./samples/test,

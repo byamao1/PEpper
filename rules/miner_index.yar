@@ -19,5 +19,6 @@ include "./miner/multi-miner-exe.yar"
 include "./miner/pua_cryptocoin_miner.yar"
 include "./miner/pua_xmrig_monero_miner.yar"
 include "./miner/xmrig.yar"
+include "./miner/miner_detection.yar"
 
 
