@@ -1,4 +1,6 @@
 import re
+
+from constants.const import EXCEPTION_VALUE
 from . import colors
 
 
@@ -27,28 +29,36 @@ def get(malware, csv):
         "Torpig (UPX) VMM Trick": "\x51\x51\x0F\x01\x27\x00\xC1\xFB\xB5\xD5\x35\x02\xE2\xC3\xD1\x66\x25\x32\xBD\x83"
                                   "\x7F\xB7\x4E\x3D\x06\x80\x0F\x95\xC1\x8B\xC1\xC3 "
     }
-    
+
     csv_written = False
+    try:
+        with open(malware, "r", errors='replace') as f:
+            buf = f.read()
+            for string in VM_Str:
+                match = re.findall(VM_Str[string], buf,
+                                   re.IGNORECASE | re.MULTILINE)
+                if match:
+                    trk.append(string)
 
-    with open(malware, "r", errors='replace') as f:
-        buf = f.read()
-        for string in VM_Str:
-            match = re.findall(VM_Str[string], buf,
-                               re.IGNORECASE | re.MULTILINE)
-            if match:
-                trk.append(string)
+            for trick in VM_Sign:
+                if buf.find(VM_Sign[trick][::-1]) > -1:
+                    count += 1
+                    trk.append(trick)
+            csv.write(str(count)+",")
+            csv_written = True
 
-        for trick in VM_Sign:
-            if buf.find(VM_Sign[trick][::-1]) > -1:
-                count += 1
-                trk.append(trick)
-                csv.write(str(count)+",")
-                csv_written = True
+        if csv_written:
+            return
 
-    if not trk:
-        print((colors.GREEN + "[X]" + colors.DEFAULT + " No"))
-        csv.write("0,")
-    else:
-        print((colors.RED + "".join(trk) + colors.DEFAULT))
-        if not csv_written:
+        if not trk:
+            print((colors.GREEN + "[X]" + colors.DEFAULT + " No"))
+            csv.write("0,")
+            csv_written = True
+        else:
+            print((colors.RED + "".join(trk) + colors.DEFAULT))
             csv.write(str(len(trk)) + ",")
+            csv_written = True
+    except Exception as e:
+        print(f"Throw: {str(e)}")
+        if not csv_written:
+            csv.write(f"{EXCEPTION_VALUE},")

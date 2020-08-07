@@ -3,7 +3,7 @@ import sys
 import peutils
 import os
 from . import colors
-
+from constants.const import EXCEPTION_VALUE
 
 # check if the PE is packed
 
@@ -39,4 +39,4 @@ def get(malware, csv):
 
     except Exception as e:
         print(e)
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

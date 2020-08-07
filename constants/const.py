@@ -5,3 +5,5 @@
 # @File    : const.py
 
 EXCEPTION_VALUE = "-1"
+
+RES_DIR_PATH = "res"

@@ -2,7 +2,7 @@ import os
 import lief
 import sys
 from . import colors
-
+from constants.const import EXCEPTION_VALUE
 
 # check for anti-debugging calls
 
@@ -39,4 +39,4 @@ def get(malware, csv):
 
     except Exception as e:
         print(e)
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

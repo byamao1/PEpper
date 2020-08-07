@@ -2,6 +2,7 @@ import os
 import sys
 import lief
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # checks for suspicious calls
 
@@ -38,4 +39,4 @@ def get(malware, csv):
 
     except Exception as e:
         print(e)
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")

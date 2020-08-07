@@ -1,7 +1,0 @@
-id,susp_entrop_ratio,susp_name_ratio,susp_code_size,imphash,n_exports,n_antidbg,n_antivm,n_susp_api,has_cfg,has_dep,has_aslr,has_seh,has_gs,has_tls,has_code_integrity,susp_dbg_ts,n_url,n_ip,has_manifest,has_version,is_packed,has_certificate,susp_virustotal_ratio,n_yara_rules
-000e44d6ebfb572015549c20047e66c8,0.5%,0.0%,0,,0,0,1,0,0,1,1,1,1,1,1,1,0,0,-1,-1,1,0,-1,0
-00e69728719213a306c42e2abc8960ab,0.25%,0.0%,0,,0,0,0,0,0,0,1,1,1,1,1,-1,0,0,-1,-1,1,0,-1,1
-00e8243a017cc86024ccca4640ecd6e3,0.5%,0.0%,0,,0,0,1,0,0,1,1,1,1,1,1,1,0,0,-1,-1,1,0,-1,0
-0a4cf2a4ae49e6d2b03a591558dcd047,0.5%,0.0%,0,,0,0,1,0,0,1,1,1,1,1,1,1,0,0,-1,-1,1,0,-1,0
-0a4ea2bc69d0f743172a94d9c5d44d10,0.25%,0.0%,0,,0,0,0,0,0,0,1,1,1,1,1,-1,0,0,-1,-1,1,0,-1,1
-0a5e6b446e988e8916aaa66417be9ea0,0.5%,0.0%,0,,0,0,1,0,0,1,1,1,1,1,1,1,0,0,-1,-1,1,0,-1,0

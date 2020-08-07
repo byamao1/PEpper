@@ -2,6 +2,7 @@ import pefile
 import sys
 import os
 from . import colors
+from constants.const import EXCEPTION_VALUE
 
 # Computes a fingerprint of the binary's IAT (Import Address Table).
 # In a PE (Portable Executable) file, IAT contains the list of the dynamically linked libraries
@@ -27,4 +28,4 @@ def get(malware, csv):
 
     except Exception as e:
         print(e)
-        csv.write("Exception,")
+        csv.write(f"{EXCEPTION_VALUE},")
