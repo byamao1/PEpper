@@ -12,6 +12,6 @@ def main(dir_dict: dict):
 
 
 if __name__ == "__main__":
-    dir_dict = {r"E:\Workshop\AIIT\比赛\DataConf 2020\4初赛附加赛\tmp": r'./samples/data_'}
+    dir_dict = {r"E:\Workshop\AIIT\比赛\DataConf 2020\4初赛附加赛\1_data_real": r'./samples/addtion'}
     main(dir_dict)
 

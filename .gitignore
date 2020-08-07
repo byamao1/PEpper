@@ -12,3 +12,5 @@ logs/
 samples/black
 samples/white
 samples/test
+samples/addtion
+samples/*.zip
