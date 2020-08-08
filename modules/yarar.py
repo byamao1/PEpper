@@ -55,12 +55,12 @@ def do_get(malware, csv):
                     strings_list.append(i[2])
                 print((colors.WHITE + "\tStrings: " + colors.DEFAULT))
                 for i in list(set(strings_list)):
-                    if all(str(c) in string.printable for c in i):
-                        print(("\t\t" + format_str.format(str(i), colors.WHITE +
-                                                          "| Occurrences:" + colors.DEFAULT,
-                                                          str(strings_list.count(i)))))
-                    else:
-                        print("\t\t[X] Not printable")
+                    # if all(str(c) in string.printable for c in i):
+                    print(("\t\t" + format_str.format(str(i), colors.WHITE +
+                                                      "| Occurrences:" + colors.DEFAULT,
+                                                      str(strings_list.count(i)))))
+                    # else:
+                    #     print("\t\t[X] Not printable")
                 del (strings_list[:])
             print("\n")
         csv.write(str(len(filter_match(matches))))
