@@ -63,10 +63,19 @@ def do_get(malware, csv):
                         print("\t\t[X] Not printable")
                 del (strings_list[:])
             print("\n")
-        csv.write(str(len(matches)))
+        csv.write(str(len(filter_match(matches))))
     else:
         print((colors.RED + "[X] No" + colors.DEFAULT))
-        csv.write(str(len(matches)))
+        csv.write(str(len(filter_match(matches))))
+
+# Filter match rules which are not malware features
+def filter_match(matches: list):
+    res = []
+    filter_list = ["is_pe", "is_elf"]
+    for match in matches:
+        if str(match) not in filter_list:
+            res.append(match)
+    return res
 
 
 def get(malware, csv):
